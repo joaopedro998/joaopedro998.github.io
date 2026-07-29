@@ -20,10 +20,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    
-    defaults:
-      run:
-        working-directory: ./meu-portfolio
 
     steps:
       - name: Checkout do código
@@ -33,6 +29,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: "npm"
+          cache-dependency-path: package-lock.json
 
       - name: Instalar Dependências
         run: npm ci
@@ -43,7 +41,8 @@ jobs:
       - name: Upload dos arquivos buildados
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./meu-portfolio/dist/meu-portfolio/browser
+          # Alterado para ler direto do dist gerado na raiz
+          path: ./dist/meu-portfolio/browser
 
       - name: Publicar no GitHub Pages
         id: deployment
