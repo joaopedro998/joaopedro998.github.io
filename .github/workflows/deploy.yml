@@ -29,8 +29,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: "npm"
-          cache-dependency-path: package-lock.json
 
       - name: Instalar Dependências
         run: npm ci
@@ -38,10 +36,18 @@ jobs:
       - name: Build do Projeto Angular
         run: npx ng build --base-href=/
 
+      # Essa etapa inspeciona e remove o README da pasta compilada caso o Angular tenha copiado
+      - name: Remover README acidental da pasta de build
+        run: |
+          rm -f ./dist/meu-portfolio/browser/README.md
+          rm -f ./dist/meu-portfolio/README.md
+          ls -la ./dist/meu-portfolio/browser || ls -la ./dist/meu-portfolio
+
       - name: Upload dos arquivos buildados
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/meu-portfolio
+          # É AQUI QUE ESTAVA O SEGREDO! O path obrigatório do Angular moderno é na subpasta browser:
+          path: ./dist/meu-portfolio/browser
 
       - name: Publicar no GitHub Pages
         id: deployment
