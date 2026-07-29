@@ -20,6 +20,11 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./meu-portfolio
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -29,20 +34,18 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
+          cache-dependency-path: ./meu-portfolio/package-lock.json
 
       - name: Instalar Dependências
         run: npm ci
 
       - name: Build do Projeto Angular
-        # Se o seu repositório se chamar apenas joaopedro998.github.io, deixe sem o flag --base-href
-        # Se for um repositório normal (ex: portfolio), usamos --base-href=/nome-do-repositorio/
         run: npx ng build --base-href=/
 
       - name: Upload dos arquivos buildados
         uses: actions/upload-pages-artifact@v3
         with:
-          # Nas versões modernas do Angular CLI com outputMode: static, a saída fica aqui:
-          path: ./dist/meu-portfolio/browser
+          path: ./meu-portfolio/dist/meu-portfolio/browser
 
       - name: Publicar no GitHub Pages
         id: deployment
