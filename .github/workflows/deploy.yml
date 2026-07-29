@@ -33,9 +33,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: "npm"
-          # Corrigido: Usando o caminho a partir da raiz do repositório
-          cache-dependency-path: meu-portfolio/package-lock.json
 
       - name: Instalar Dependências
         run: npm ci
