@@ -29,12 +29,13 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Configurar Node.js
+      - name: Configurar Node.js (v22 LTS)
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: "npm"
-          cache-dependency-path: ./meu-portfolio/package-lock.json
+          # Corrigido: Usando o caminho a partir da raiz do repositório
+          cache-dependency-path: meu-portfolio/package-lock.json
 
       - name: Instalar Dependências
         run: npm ci
