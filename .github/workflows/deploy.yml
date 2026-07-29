@@ -41,8 +41,7 @@ jobs:
       - name: Upload dos arquivos buildados
         uses: actions/upload-pages-artifact@v3
         with:
-          # Alterado para ler direto do dist gerado na raiz
-          path: ./dist/meu-portfolio/browser
+          path: ./dist/meu-portfolio
 
       - name: Publicar no GitHub Pages
         id: deployment
