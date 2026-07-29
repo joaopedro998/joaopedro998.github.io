@@ -1,0 +1,49 @@
+name: Deploy Angular Portfolio to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Instalar Dependências
+        run: npm ci
+
+      - name: Build do Projeto Angular
+        # Se o seu repositório se chamar apenas joaopedro998.github.io, deixe sem o flag --base-href
+        # Se for um repositório normal (ex: portfolio), usamos --base-href=/nome-do-repositorio/
+        run: npx ng build --base-href=/
+
+      - name: Upload dos arquivos buildados
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Nas versões modernas do Angular CLI com outputMode: static, a saída fica aqui:
+          path: ./dist/meu-portfolio/browser
+
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "Byte Track — Gestão de Finanças & Criptoativos",
+    "description": "Plataforma de controle financeiro e monitoramento de investimentos em criptomoedas desenvolvida para a disciplina de Engenharia de Software. Interface moderna em Angular com rotas, componentes modulares e relatórios dinâmicos de ativos.",
+    "tags": ["Angular", "TypeScript", "Crypto API", "HTML5/SCSS", "Software Engineering"],
+    "githubUrl": "https://github.com/C14-INATEL/finance-crypto-frontend"
+  },
+  {
+    "id": 2,
+    "title": "Sistema de Gestão Escolar com Neo4j & Python",
+    "description": "Aplicação back-end em Python aplicando modelagem de grafos com Neo4j (NoSQL). O sistema gerencia relacionamentos em nós entre Alunos e Turmas, com CRUD completo, vinculação e consultas dinâmicas via Cypher.",
+    "tags": ["Python", "Neo4j", "Graph Database", "NoSQL", "OOP", "CRUD"],
+    "githubUrl": "https://github.com/joaopedro998/ProjFINAL"
+  },
+  {
+    "id": 3,
+    "title": "Minhas Finanças — Gestão Financeira Pessoal",
+    "description": "Aplicação voltada para controle financeiro pessoal, permitindo o acompanhamento de receitas, despesas e organização de orçamento com interface interativa e relatórios de fluxo de caixa.",
+    "tags": ["Angular", "TypeScript", "HTML5", "CSS3", "UI/UX"],
+    "githubUrl": "https://github.com/joaopedro998/Minhas-Financas-App"
+  },
+  {
+    "id": 4,
+    "title": "Saladas da Jeh — Plataforma e Vitrine Digital",
+    "description": "Aplicação web desenvolvida para vitrine digital e gestão de cardápio de delivery, focada em usabilidade, apresentação atraente de produtos e experiência do usuário (UI/UX).",
+    "tags": ["Web Development", "HTML5", "CSS3", "JavaScript", "Frontend"],
+    "githubUrl": "https://github.com/joaopedro998/Saladas-da-jeh"
+  },
+  {
+    "id": 5,
+    "title": "CardView — Componentização & Interfaces Modulares",
+    "description": "Projeto focado no desenvolvimento de componentes visuais reutilizáveis em formato de cards, aplicando boas práticas de design modular, responsividade e estilização moderna.",
+    "tags": ["Frontend", "UI Components", "CSS Flexbox/Grid", "JavaScript"],
+    "githubUrl": "https://github.com/joaopedro998/CardView"
+  }
+]
